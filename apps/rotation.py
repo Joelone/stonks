@@ -66,7 +66,7 @@ def build_rchart(
         benchmark=None,
 ):
     tickers = tuple(SECTOR_TICKERS.keys()) if not tickers else tickers
-    end_date = (datetime.today() - timedelta(days=1)).strftime('%Y-%m-%d') if not end_date else end_date
+    end_date = (datetime.today() + timedelta(days=2)).strftime('%Y-%m-%d') if not end_date else end_date
     start_date = (datetime.today() - timedelta(days=120)).strftime('%Y-%m-%d') if not start_date else start_date
     benchmark = 'SPY' if not benchmark else benchmark
     rchart = RotationChart(
@@ -164,8 +164,8 @@ layout = html.Div(
                         dcc.DatePickerRange(
                             id='chart-date-picker-range',
                             min_date_allowed=date(2000, 1, 1),
-                            max_date_allowed=date.today() - timedelta(days=1),
-                            initial_visible_month=date(2021, 1, 1),
+                            max_date_allowed=date.today() + timedelta(days=2),
+                            initial_visible_month=datetime.today() - timedelta(days=120),
                         ),
                     ]
                 ),
