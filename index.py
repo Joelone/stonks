@@ -1,9 +1,10 @@
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc
+from dash import html
 from dash.dependencies import Input, Output
 
 from app import app
-from apps import rotation, maximum_pain
+from apps import rotation
+# from apps import maximum_pain
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
@@ -16,8 +17,8 @@ app.layout = html.Div([
 def display_page(pathname):
     if pathname == '/apps/rotation':
         return rotation.layout
-    elif pathname == '/apps/maxpain':
-        return maximum_pain.layout
+    # elif pathname == '/apps/maxpain':
+    #     return maximum_pain.layout
     else:
         return '404'
 

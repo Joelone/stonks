@@ -19,6 +19,8 @@ class RotationChart:
     def download_starting_data(self):
         ticker_string = self.benchmark + ' ' + ' '.join(self.tickers)
         self.data = self.yf.download(ticker_string, start=self.start_date, end=self.end_date)
+        filename = self.tickers + '-' + self.start_date + '-' + self.end_date  + '.pkl'
+        self.data.to_pickle(filename)
 
     def process(self):
         self.normalize()

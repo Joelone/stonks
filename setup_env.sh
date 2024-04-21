@@ -12,5 +12,5 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-conda activate dash-stonk
+conda activate data
 #conda deactivate

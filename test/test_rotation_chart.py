@@ -1,10 +1,10 @@
-from unittest import TestCase
+import unittest
 import pandas as pd
 from datetime import datetime, timedelta
 from rotation import RotationChart
 
 
-class RotationCharTest(TestCase):
+class RotationCharTest(unittest.TestCase):
 
     def test_process(self):
         test_size = 500
@@ -21,6 +21,8 @@ class RotationCharTest(TestCase):
         data.index = index
         acIdx = pd.MultiIndex.from_arrays([['Adj Close', 'Adj Close'], ['SPY', 'IWM']])
         data.columns = acIdx
+        filename = 'IWM.pkl'
+        data.to_pickle(filename)
 
         r = RotationChart()
         r.data = data
@@ -47,3 +49,5 @@ class RotationCharTest(TestCase):
         self.assertEqual(
             r.data.loc[date_list[0], ('RS-Ratio', 'IWM')], 100
         )
+
+unittest.main()

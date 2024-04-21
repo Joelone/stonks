@@ -1,8 +1,10 @@
 # install requirements
 conda install --file requirements.txt -c conda-forge
 
-source setup_env.sh
-python index.py
+conda activate data
+conda deactivate
+
+source setup_env.sh;python index.py
 
 http://127.0.0.1:8050/apps/rotation
 
@@ -10,4 +12,5 @@ $ tick
 SOXL,DPST,FAS,NAIL,INDL,DUSL,SPXL,TIGR,COIN,HOOD,FB,AAPL,SQ
 SOXL,DPST,FAS,INDL,SDIG,HUT,SPXL,TIGR,COIN,HOOD,FB,AAPL,SQ
 SOXL,DPST,FAS,INDL,SDIG,HUT,SPXL,TIGR,COIN,HOOD,AAPL,NAIL,MEXX
+SOXL,DPST,FAS,INDL,SDIG,HUT,SPXL,TIGR,COIN,HOOD,AAPL,NAIL,MEXX,SQ,DUSL,FB
 

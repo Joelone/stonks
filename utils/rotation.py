@@ -19,6 +19,15 @@ class RotationChart:
     def download_starting_data(self):
         ticker_string = self.benchmark + ' ' + ' '.join(self.tickers)
         self.data = self.yf.download(ticker_string, start=self.start_date, end=self.end_date)
+        filename = 'data/' + self.tickers[0] + '-' + self.tickers[-1] + '_' +  self.start_date + '_' + self.end_date  + '.pkl'
+        self.data.to_pickle(filename)
+
+    def load_test_data(self):
+        # ticker_string = self.benchmark + ' ' + ' '.join(self.tickers)
+        # self.data = self.yf.download(ticker_string, start=self.start_date, end=self.end_date)
+        # filename = self.tickers[0] + '-' + self.tickers[-1] + '-' +  self.start_date[0] + '-' + self.end_date[0]  + '.pkl'
+        # self.data.to_pickle(filename)
+        self.data = pd.read_pickle('data/SOXL-XLU_2022-11-13_2023-03-15.pkl')
 
     def process(self):
         self.normalize()

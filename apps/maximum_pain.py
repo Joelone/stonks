@@ -1,5 +1,5 @@
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc
+from dash import html
 from dash.dependencies import Input, Output, State
 from dash import callback_context
 import dash_bootstrap_components as dbc
@@ -10,7 +10,9 @@ from app import app
 
 
 
-def build_max_pain(ticker=None, strike_date=None):
+def build_max_pain(ticker="CRSR", strike_date=datetime.today()):
+    if ticker is None:
+        raise ValueError("Ticker symbol is required")
     mp = MaxPain(ticker)
     mp.run(strike_date)
     return mp
