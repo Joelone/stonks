@@ -70,7 +70,8 @@ def build_rchart(
     # tickers = ('SOXL','DPST') # test tickers
     # tickers = ('SOXL','DPST','FAS','INDL','EURL','MEXX','BRZU','NAIL','GUSH','ERX','SDIG','HUT','SPXL','TQQQ','FNGU','CURE','TIGR', 'AAPL')
     # tickers = ('SOXL','FNGU','TQQQ','INDL','EURL','VGK','MEXX','BRZU','SPXL','DPST','FAS','TIGR','PDD', 'XLP', 'XLV', 'XLU')
-    tickers = ('SOXL','FNGU','TQQQ','AMD', 'PFE','INDL','EURL','VGK','MEXX','BRZU','SPXL','DPST','FAS','TIGR','PDD', 'XLP', 'XLV', 'XLU')
+    # tickers = ('SOXL','FNGU','TQQQ','AMD', 'PFE','INDL','EURL','VGK','MEXX','BRZU','SPXL','DPST','FAS','TIGR','PDD', 'XLP', 'XLV', 'XLU')
+    tickers = ('SOXL','FNGU','TQQQ','NFLX','HD','AAPL','INDL','EURL','MEXX','BRZU','SPXL','DPST','FAS','NU','TIGR','PDD','ARM', 'UDOW', 'NKE', 'ADBE', 'CRM', 'DIS', 'GOOGL','NVDA', 'TSLA')
 
     end_date = (datetime.today() + timedelta(days=2)).strftime('%Y-%m-%d') if not end_date else end_date
     start_date = (datetime.today() - timedelta(days=120)).strftime('%Y-%m-%d') if not start_date else start_date
@@ -95,9 +96,9 @@ def plot_jdk_rs(rchart):
                     go.Scatter(
                         x=rchart.data.loc[:, ('JDK RS-ratio', c[1])],
                         y=rchart.data.loc[:, ('JDK RS-Momentum', c[1])],
-                        # hovertext=rchart.data.loc[:, ('Adj Close', [('Adj Close', t) for t in rchart.tickers][1])],
+                        # hovertext=rchart.data.loc[:, ('Close', [('Close', t) for t in rchart.tickers][1])],
                         hovertext=rchart.data.index,
-                        # hovertext=pd.Series(rchart.data.index.format()) + ',' +rchart.data.loc[:, ('Adj Close', c[1])],
+                        # hovertext=pd.Series(rchart.data.index.format()) + ',' +rchart.data.loc[:, ('Close', c[1])],
                         mode="markers+lines",
                         name=c[1],
                     ) for c in [('RS-Ratio', t) for t in rchart.tickers]
@@ -138,7 +139,7 @@ def plot_chart(rchart):
                         y=rchart.data.loc[:, c],
                         mode="markers+lines",
                         name=c[1]
-                    ) for c in [('Adj Close', t) for t in rchart.tickers]
+                    ) for c in [('Close', t) for t in rchart.tickers]
                 ],
 
         }
@@ -231,16 +232,16 @@ def update_graphs(ticker_list, benckmark_ticker, start_date, end_date, n_clicks)
     if 'run-button' in changed_id:
         ticker_list = ticker_list.split(',') if ticker_list else None
         rchart = build_rchart(tickers=ticker_list, benchmark=benckmark_ticker, start_date=start_date, end_date=end_date)
-        # c = [('RS-Ratio','Adj Close', t) for t in rchart.tickers]
+        # c = [('RS-Ratio','Close', t) for t in rchart.tickers]
         # t = 0
         # x=rchart.data.loc[:, ('JDK RS-ratio', c[t])]
         # y=rchart.data.loc[:, ('JDK RS-Momentum', c[t])]
         # hovertext=rchart.data.index
         # print("hovertext: %s" % hovertext)
-        # p=[('Adj Close', t) for t in rchart.tickers]
+        # p=[('Close', t) for t in rchart.tickers]
         # print("x:")
         # print(x)
-        # price=rchart.data.loc[:, ('Adj Close', c[t])]
+        # price=rchart.data.loc[:, ('Close', c[t])]
         # print("x:")
         # print(x)
         # print("y:")

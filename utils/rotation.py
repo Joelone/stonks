@@ -4,7 +4,7 @@ import yfinance as yf
 
 class RotationChart:
 
-    NORMALIZED_CLOSE = 'Adj Close Normed'
+    NORMALIZED_CLOSE = 'Close Normed'
     DEFAULT_WINDOW = 30
     DEFAULT_BENCHMARK = 'SPY'
 
@@ -38,9 +38,17 @@ class RotationChart:
         normalize all prices to the starting price
         :return:
         """
+        # Print the first few rows of the original data
+        print("Original Data:")
+        print(self.data.head())
+
+        # Print the column names to verify 'Close' exists
+        print("\nColumn Names:")
+        print(self.data.columns)
+
         start = self.data.index[0]
         all_tickers = self.tickers + [self.benchmark]
-        normed = self.data.loc[:, ('Adj Close', all_tickers)] / self.data.loc[start, ('Adj Close', all_tickers)]
+        normed = self.data.loc[:, ('Close', all_tickers)] / self.data.loc[start, ('Close', all_tickers)]
         normed.columns = normed.columns.set_levels([self.NORMALIZED_CLOSE], level=0)
         self.data = self.data.join(normed)
 
