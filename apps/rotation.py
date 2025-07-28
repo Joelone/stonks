@@ -71,7 +71,7 @@ def build_rchart(
     # tickers = ('SOXL','DPST','FAS','INDL','EURL','MEXX','BRZU','NAIL','GUSH','ERX','SDIG','HUT','SPXL','TQQQ','FNGU','CURE','TIGR', 'AAPL')
     # tickers = ('SOXL','FNGU','TQQQ','INDL','EURL','VGK','MEXX','BRZU','SPXL','DPST','FAS','TIGR','PDD', 'XLP', 'XLV', 'XLU')
     # tickers = ('SOXL','FNGU','TQQQ','AMD', 'PFE','INDL','EURL','VGK','MEXX','BRZU','SPXL','DPST','FAS','TIGR','PDD', 'XLP', 'XLV', 'XLU')
-    tickers = ('SOXL','FNGU','TQQQ','NFLX','HD','AAPL','INDL','EURL','MEXX','BRZU','SPXL','DPST','FAS','NU','TIGR','PDD','ARM', 'UDOW', 'NKE', 'ADBE', 'CRM', 'DIS', 'GOOGL','NVDA', 'TSLA')
+    tickers = ('SOXL','FNGU','TQQQ','NFLX','TSM','AAPL','TSLA', 'GOOGL','NVDA', 'INDL','EURL','MEXX','BRZU','SPXL','DPST','FAS','NU','PDD','ARM','UDOW','ADBE','CRM','NKE','DIS')
 
     end_date = (datetime.today() + timedelta(days=2)).strftime('%Y-%m-%d') if not end_date else end_date
     start_date = (datetime.today() - timedelta(days=120)).strftime('%Y-%m-%d') if not start_date else start_date
